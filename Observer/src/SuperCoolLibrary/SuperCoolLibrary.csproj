@@ -46,6 +46,7 @@
     <Compile Include="CoolStuff\NameCheckers\ICheckNames.cs" />
     <Compile Include="CoolStuff\NameCheckers\SmurfNameChecker.cs" />
     <Compile Include="CoolStuff\NameManager.cs" />
+    <Compile Include="CoolStuff\NotificationEventArg.cs" />
     <Compile Include="CoolStuff\PopCultureNameModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

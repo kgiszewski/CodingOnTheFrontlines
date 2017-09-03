@@ -10,6 +10,8 @@ namespace MyApp
         {
             var nameManager = new NameManager();
 
+            nameManager.OnNotification += NameManagerOnOnNotification;
+
             var possibleNames = new List<string> {"Fred", "George", "Jon", "Daphne"};
 
             foreach (var name in possibleNames)
@@ -20,6 +22,12 @@ namespace MyApp
             }
 
             Console.ReadKey();
+        }
+
+        private static void NameManagerOnOnNotification(object sender, NotificationEventArg notificationEventArg)
+        {
+            //log the message
+            Console.WriteLine(notificationEventArg.Message);
         }
     }
 }

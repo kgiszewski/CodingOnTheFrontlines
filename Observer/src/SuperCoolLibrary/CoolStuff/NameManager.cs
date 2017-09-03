@@ -1,13 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using SuperCoolLibrary.CoolStuff.NameCheckers;
 
 namespace SuperCoolLibrary.CoolStuff
 {
     public class NameManager : INameManager
     {
+        public event NotificationHandler OnNotification;
+
         public PopCultureNameModel GetModel(string name)
         {
             //logging - name to check
+            _notify($"Checking '{name}'...");
 
             var nameCheckers = new List<ICheckNames>
             {
@@ -19,10 +23,12 @@ namespace SuperCoolLibrary.CoolStuff
             foreach (var nameChecker in nameCheckers)
             {
                 //logging - current name checker
+                _notify($"Using checker '{nameChecker.FriendlyName}'...");
 
                 if (nameChecker.CheckName(name))
                 {
                     //logging - we have a match
+                    _notify($"We matched!");
 
                     return new PopCultureNameModel
                     {
@@ -31,9 +37,14 @@ namespace SuperCoolLibrary.CoolStuff
                         FriendlyName = nameChecker.FriendlyName
                     };
                 }
+                else
+                {
+                    _notify($"We did not match!");
+                }
             }
 
             //logging - we didn't find anything!
+            _notify($"We have no idea!");
 
             return new PopCultureNameModel
             {
@@ -41,6 +52,17 @@ namespace SuperCoolLibrary.CoolStuff
                 NameChecker = "Unknown",
                 FriendlyName = "Unknown!"
             };
+        }
+
+        private void _notify(string message)
+        {
+            if (OnNotification != null)
+            {
+                OnNotification.Invoke(this, new NotificationEventArg
+                {
+                    Message = message
+                });
+            }
         }
     }
 }
