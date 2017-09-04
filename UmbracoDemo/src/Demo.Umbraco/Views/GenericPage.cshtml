@@ -1,0 +1,10 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using Archetype.Extensions
+@using Archetype.Models
+@{
+	Layout = null;
+
+    var fieldsets = Model.Content.GetPropertyValue<ArchetypeModel>("modules");
+}
+
+@Html.RenderArchetypePartials(fieldsets, "~/Views/Partials/Archetype/")

@@ -1,0 +1,4 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Archetype.Models.ArchetypeFieldsetModel>
+
+<h2>@Model.GetValue("headline")</h2>
+<div>@Html.Raw(Model.GetValue("text"))</div>

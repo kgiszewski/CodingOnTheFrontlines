@@ -19,6 +19,11 @@ $RECYCLE.BIN/
 src/[Pp]ackages/
 Output/*
 
+UmbracoDemo/src/Demo.Umbraco/App_Data
+UmbracoDemo/src/Demo.Umbraco/Umbraco
+UmbracoDemo/src/Demo.Umbraco/Umbraco_Client
+UmbracoDemo/src/packages
+
 node_modules
 
 *.aps

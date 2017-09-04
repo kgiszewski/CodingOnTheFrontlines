@@ -1,0 +1,14 @@
+﻿@using System.Collections
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Archetype.Models.ArchetypeFieldsetModel>
+@{
+    var images = Model.GetValue<IEnumerable<IPublishedContent>>("images");
+}
+
+<h2>@Model.GetValue("headline")</h2>
+
+@foreach (var image in images)
+{
+    var imageUrl = image.GetCropUrl();
+
+    <img src="@imageUrl"/>
+}
